@@ -18,6 +18,13 @@ module.exports = {
     "react/button-has-type": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["function-declaration", "arrow-function"],
+        "unnamedComponents": "arrow-function"
+      }
+    ]    
   },
   settings: {
     "import/resolver": {
