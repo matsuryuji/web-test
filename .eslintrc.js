@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: ["plugin:react/recommended", "airbnb", "prettier", "plugin:react/jsx-runtime"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
+    "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
   },
   settings: {
