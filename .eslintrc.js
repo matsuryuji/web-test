@@ -16,8 +16,10 @@ module.exports = {
   rules: {
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
+    "no-param-reassign": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
+    "no-console": "off",
     "react/function-component-definition": [
       "error",
       {
