@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier", "plugin:react/jsx-runtime"],
+  extends: [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "plugin:react/jsx-runtime",
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -20,13 +25,15 @@ module.exports = {
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
     "no-console": "off",
+    "react/prop-types": "off",
+    "no-unused-vars": "off",
     "react/function-component-definition": [
       "error",
       {
-        "namedComponents": ["function-declaration", "arrow-function"],
-        "unnamedComponents": "arrow-function"
-      }
-    ]    
+        namedComponents: ["function-declaration", "arrow-function"],
+        unnamedComponents: "arrow-function",
+      },
+    ],
   },
   settings: {
     "import/resolver": {

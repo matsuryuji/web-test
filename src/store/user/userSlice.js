@@ -1,32 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getPosts = createAsyncThunk("posts/getPosts", async () => {
+export const getUsers = createAsyncThunk("users/getUsers", async () => {
   const { data } = await axios.get(
-    `https://jsonplaceholder.typicode.com/posts`
+    `https://jsonplaceholder.typicode.com/users`
   );
   return data;
 });
 
-const postsSlice = createSlice({
-  name: "posts",
+const usersSlice = createSlice({
+  name: "users",
   initialState: {
-    posts: [],
+    users: [],
     loading: false,
   },
   extraReducers(builder) {
     builder
-      .addCase(getPosts.pending, (state) => {
+      .addCase(getUsers.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getPosts.fulfilled, (state, action) => {
+      .addCase(getUsers.fulfilled, (state, action) => {
         state.loading = false;
         state.posts = action.payload;
       })
-      .addCase(getPosts.rejected, (state) => {
+      .addCase(getUsers.rejected, (state) => {
         state.loading = false;
       });
   },
 });
 
-export default postsSlice.reducer;
+export default usersSlice.reducer;
