@@ -21,12 +21,14 @@ const usersSlice = createSlice({
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = action.payload;
+        state.users = action.payload;
       })
       .addCase(getUsers.rejected, (state) => {
         state.loading = false;
       });
   },
 });
+
+export const selectAllUsers = (state) => state.users.users;
 
 export default usersSlice.reducer;
