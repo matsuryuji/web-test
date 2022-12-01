@@ -8,7 +8,7 @@ const UserInfo = () => {
   return (
     <div className="user-info__wrapper">
       <div className="user-info__card">
-        <UserCard user={user} />
+        <UserCard user={user} key={user.id} />
       </div>
     </div>
   );
