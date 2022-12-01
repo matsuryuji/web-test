@@ -1,5 +1,6 @@
-.card {
+$small: 520px;
 
+.card {
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,17 @@
     height: auto;
     align-items: flex-start;
     text-align: start;
+
+    @media screen and (max-width: $small) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      align-items: flex-start;
+      text-align: start;
+      width: 340px;
+    }
   }
   &__post-info {
     display: flex;
