@@ -2,7 +2,12 @@ import Card from "components/Card";
 import { Button } from "components/core";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "store/post/postSlice";
+import {
+  getPost,
+  removePostId,
+  savePostId,
+  savePostIndex
+} from "store/post/postSlice";
 import { getPosts } from "store/posts/postsSlice";
 import { getUser } from "store/user/userSlice";
 import { getUsers, selectAllUsers } from "store/users/usersSlice";
@@ -13,8 +18,8 @@ const Home = () => {
   const posts = useSelector((state) => state.posts.posts);
   const users = useSelector(selectAllUsers);
   const postComments = useSelector((state) => state.post.postComments);
+  const postIds = useSelector((state) => state.post.postIds);
   const [visiblePosts, setVisiblePosts] = useState(10);
-  const [postId, setPostId] = useState(0);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -27,9 +32,12 @@ const Home = () => {
     else setVisiblePosts(10);
   };
 
-  const getComment = (idPost) => {
-    setPostId(idPost);
+  const getComment = (idPost, index) => {
+    dispatch(savePostIndex(index));
     dispatch(getPost(idPost));
+    if (postIds.includes(idPost)) {
+      dispatch(removePostId(idPost));
+    } else dispatch(savePostId(idPost));
   };
 
   const getUserInfo = (idUser) => {
@@ -41,9 +49,10 @@ const Home = () => {
       <div className="home__cards">
         {posts && users ? (
           <>
-            {posts.slice(0, visiblePosts).map((post) => (
+            {posts.slice(0, visiblePosts).map((post, index) => (
               <Card
                 key={post.id}
+                index={index}
                 id={post.id}
                 users={users}
                 userId={post.userId}
@@ -52,6 +61,7 @@ const Home = () => {
                 getComment={getComment}
                 postComments={postComments}
                 getUserInfo={getUserInfo}
+                postIds={postIds}
               />
             ))}
           </>

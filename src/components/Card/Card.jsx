@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 const Card = ({
   users,
   userId,
+  index,
   title,
   id,
   getComment,
   getUserInfo,
-  postComments
+  postComments,
+  postIds
 }) => {
   const findAuthor = () => {
     const author = users.find((user) => user.id === userId);
@@ -26,25 +28,48 @@ const Card = ({
     );
   };
 
+  const findComment = () => {
+    const comments = postComments.find((post) => post[0].postId === id);
+    return (
+      <div className="card__comments" key={id}>
+        {comments?.map((comment) => (
+          <div className="card__comment">
+            <div className="card__comment-user">
+              <span>{comment.name}</span>
+              <span>{comment.email}</span>
+            </div>
+            <span>{comment.body}</span>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="card__wrapper">
-      <Link
-        to={`/user/${userId}`}
-        style={{ textDecoration: "none", color: "#E7E9EA" }}
-      >
-        <div className="card__author-info" onClick={() => getUserInfo(userId)}>
-          {findAuthor()}
+      <div className="card__post-info">
+        <Link
+          to={`/user/${userId}`}
+          style={{ textDecoration: "none", color: "#E7E9EA" }}
+        >
+          <div
+            className="card__author-info"
+            onClick={() => getUserInfo(userId)}
+          >
+            {findAuthor()}
+          </div>
+        </Link>
+        <div onClick={() => getComment(id, index)}>
+          <h1>{title}</h1>
         </div>
-      </Link>
-      <div onClick={() => getComment(id)}>
-        <h1>{title}</h1>
-      </div>
-      <div className="card__icon">
-        <div className="card__details">
-          <FaRegComment style={{ color: "#E7E9EA" }} />
-          <span>comments</span>
+        <div className="card__icon">
+          <div className="card__details" onClick={() => getComment(id, index)}>
+            <FaRegComment style={{ color: "#E7E9EA" }} />
+            <span>comments</span>
+          </div>
         </div>
       </div>
+      {postIds.includes(id) ? <>{findComment()}</> : null}
     </div>
   );
 };

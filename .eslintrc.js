@@ -26,6 +26,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "no-console": "off",
     "react/prop-types": "off",
+    "react/jsx-no-useless-fragment": "off",
     "no-unused-vars": "off",
     "react/function-component-definition": [
       "error",
