@@ -13,6 +13,7 @@ const Card = ({
   index,
   title,
   id,
+  body,
   getComment,
   getUserInfo,
   postComments,
@@ -61,6 +62,7 @@ const Card = ({
         </Link>
         <div onClick={() => getComment(id, index)}>
           <h1>{title}</h1>
+          <span>{body}</span>
         </div>
         <div className="card__icon">
           <div className="card__details" onClick={() => getComment(id, index)}>
