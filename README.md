@@ -30,4 +30,4 @@ Abrirá na porta http://localhost:3000 dentro do seu browser.
 - Incluir mais animações CSS na alteração de elementos DOM;
 
 ## `Feedback`
-Projeto feito um pouco na correria, pois ocorreram muitos imprevistos ao longo do tempo do teste prático (faculdade + fim de ano = complicado) e acarretou que não obtive 100% de tudo que eu aprendi mais tentei dar o meu máximo.
+Projeto feito um pouco na correria, pois ocorreram muitos imprevistos ao longo do tempo do teste prático (faculdade + fim de ano = complicado) e com isso não obtive 100% de tudo que eu aprendi mas tentei dar o meu máximo possível :D .
