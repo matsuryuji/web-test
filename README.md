@@ -19,6 +19,7 @@ Abrirá na porta http://localhost:3000 dentro do seu browser.
 - Manipulação de pseudo api;
 - Responsivdade;
 - Transições;
+- Projeto minimamente Lintado;
 
 ## `O que eu gostaria que fosse feito`
 - Estilização com um UI melhor;
