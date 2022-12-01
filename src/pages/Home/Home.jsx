@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "store/post/postSlice";
 import { getPosts } from "store/posts/postsSlice";
-import { getUsers, selectAllUsers } from "store/user/userSlice";
+import { getUser } from "store/user/userSlice";
+import { getUsers, selectAllUsers } from "store/users/usersSlice";
 import "./style.scss";
 
 const Home = () => {
@@ -31,6 +32,10 @@ const Home = () => {
     dispatch(getPost(idPost));
   };
 
+  const getUserInfo = (idUser) => {
+    dispatch(getUser(idUser));
+  };
+
   return (
     <div className="home__wrapper">
       <div className="home__cards">
@@ -46,6 +51,7 @@ const Home = () => {
                 body={post.body}
                 getComment={getComment}
                 postComments={postComments}
+                getUserInfo={getUserInfo}
               />
             ))}
           </>

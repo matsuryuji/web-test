@@ -7,7 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPost } from "store/post/postSlice";
 import { Link } from "react-router-dom";
 
-const Card = ({ users, userId, title, id, getComment, postComments }) => {
+const Card = ({
+  users,
+  userId,
+  title,
+  id,
+  getComment,
+  getUserInfo,
+  postComments
+}) => {
   const findAuthor = () => {
     const author = users.find((user) => user.id === userId);
     return (
@@ -24,7 +32,9 @@ const Card = ({ users, userId, title, id, getComment, postComments }) => {
         to={`/user/${userId}`}
         style={{ textDecoration: "none", color: "#E7E9EA" }}
       >
-        <div className="card__author-info">{findAuthor()}</div>
+        <div className="card__author-info" onClick={() => getUserInfo(userId)}>
+          {findAuthor()}
+        </div>
       </Link>
       <div onClick={() => getComment(id)}>
         <h1>{title}</h1>
